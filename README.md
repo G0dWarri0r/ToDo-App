@@ -1,4 +1,3 @@
-# Todo App
 A responsive and error free web application made with HTML, tailwind CSS and majorly JS.
 
 ## JavaScript concept  used
