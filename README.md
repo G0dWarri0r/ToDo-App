@@ -14,4 +14,4 @@ A responsive and error free web application made with HTML, tailwind CSS and maj
 - deleting a task.
 
 ## live demo
-[![Live Demo](https://img.shields.io/badge/Live-Demo-blue)](https://g0dwarri0r.github.io/ToDo-App/)
+<a href="https://g0dwarri0r.github.io/ToDo-App/" target="_black">ToDo App</a>
