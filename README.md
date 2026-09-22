@@ -1,3 +1,4 @@
+# Todo application
 A responsive and error free web application made with HTML, tailwind CSS and majorly JS.
 
 ## JavaScript concept  used
@@ -14,4 +15,4 @@ A responsive and error free web application made with HTML, tailwind CSS and maj
 - deleting a task.
 
 ## live demo
-<a href="https://g0dwarri0r.github.io/ToDo-App/" target="_black">ToDo App</a>
+[![Todo App](https://img.shields.io/badge/Live-Demo-blue)](https://g0dwarri0r.github.io/ToDo-App/)
