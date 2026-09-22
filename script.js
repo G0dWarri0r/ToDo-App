@@ -4,6 +4,7 @@ const todoInput = document.querySelector("#todo-input");
 const todoButton = document.querySelector("#todo-button");
 const todoList = document.querySelector("#todo-list");
 const inputError = document.querySelector("#error-msg");
+const editError = document.querySelector("#edit-error");
 const todoTask = document.querySelector("#todo-task");
 const todoStatus = document.querySelector("#todo-completion");
 
@@ -79,6 +80,7 @@ function addNewTodo(todos) {
             todos.push(newTodo);
             addTodo(newTodo.task, newTodo.id, newTodo.complete);
             localStorage.setItem("todos", JSON.stringify(todos));
+            todoInput.value = "";
         }
         else inputError.textContent = "Task already exists!", inputError.classList.remove('hidden');
     }
@@ -145,6 +147,7 @@ function editTodoUi(todos, id, button, oldIds) {
 }
 
 function editTodoLogic(todos, id) {
+    editError.classList.add('hidden');
     let currentTodo = todos.find((todo) => {
         if (todo.id === Number(id)) {
             return todo;
@@ -185,6 +188,7 @@ function deleteTodo(e, todos, id, oldIds) {
 }
 
 function modifyTodo(e, todos, oldIds) {
+    editError.classList.add('hidden');
     inputError.classList.add('hidden');
     let button = e.target.closest("button");
     let action = button?.dataset?.action;
@@ -201,10 +205,14 @@ function modifyTodo(e, todos, oldIds) {
 }
 
 function completeStatus(e, todos) {
-
     let checkbox = e.target.closest('input[type="checkbox"]');
     let id = checkbox?.dataset?.id;
-    if (checkbox) {
+    let currentTodo = todos.find((todo) => {
+        if (todo.id === Number(id)) {
+            return todo;
+        }
+    }) || [];
+    if (currentTodo.editing === false) {
         todos = todos.map((todo) => {
             e.target.closest('li').remove();
             if (todo.id === Number(id)) {
@@ -216,6 +224,10 @@ function completeStatus(e, todos) {
             }
             return todo;
         });
+    }
+    else if(checkbox) {
+        checkbox.checked = false;
+        editError.classList.remove('hidden');
     }
     localStorage.setItem("todos", JSON.stringify(todos));
     return todos;
